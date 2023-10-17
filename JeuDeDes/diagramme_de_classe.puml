@@ -1,0 +1,62 @@
+@startuml
+class Game {
+  createDie()
+  createDirectionFace()
+  createPowerFace()
+}
+
+class Board {
+
+}
+
+class Tile { 
+  createMerchantTile()
+  createBonusTile()
+  createNormalTile()
+  createEndTile()
+}
+
+class Player {
+  coins
+}
+
+class Die {
+
+}
+
+interface IDieFace {
+
+}
+
+class DirectionFace {
+
+}
+
+class PowerFace {
+
+}
+
+interface IGameEvent {
+
+}
+
+Board *--> Tile
+Player *-> Die
+Die *-> IDieFace
+
+IDieFace <|-- PowerFace
+IDieFace <|-- DirectionFace
+
+IGameEvent <|-- MerchantEvent
+IGameEvent <|-- BonusEvent
+IGameEvent <|-- GameEndEvent
+
+Tile --> IGameEvent
+
+Board *-> Player
+Game --> Board
+Game ..> Player
+
+IRandomNumberGenerator <|-- RandomNumberGenerator
+Die -> IRandomNumberGenerator
+@enduml

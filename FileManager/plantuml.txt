@@ -1,0 +1,68 @@
+@startuml
+
+package Subsystem {
+  interface INodeElement {
+    +Name
+    +IsTerminal
+    +Children
+    +Path()
+  }
+  
+  
+  INodeElement <|-- NodeElement
+  
+  abstract class NodeElement {
+    +name
+    +path()
+  }
+  
+  class Folder {
+    +addChild(INodeElement)
+    +removeChild(INodeElement)
+  }
+  
+  NodeElement <|-- Folder
+  INodeElement <--* Folder : "children"
+  'NodeElement --> "Parent" Folder
+  
+  class File {
+    +extension
+    +content
+  }
+  
+  NodeElement <|-- File
+  NodeElement -> ObserverList
+  
+  class ObserverList {
+    +Add()
+    +Remove()
+    +Notify()
+  }
+
+  class FileBuilder {
+    -extension: string
+    -content: string
+    +FileBuilder(string)
+    +SetExtension(string)
+    +SetContent(string)
+    +GetFile() : File
+  }
+  
+  class FolderBuilder {
+    -children
+    +FolderBuilder(string)
+    +AddChild(NodeElement)
+    +GetFolder() : Folder
+  }
+  
+  File <.. FileBuilder : "creates"
+  Folder <.. FolderBuilder : "creates"
+}
+
+class FileSystem {
+  +root
+  +PlaceFileAt(string)
+}
+
+FileSystem -> Subsystem
+@enduml

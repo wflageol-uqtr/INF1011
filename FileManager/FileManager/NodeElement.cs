@@ -8,7 +8,6 @@ namespace FileManager
 {
     public abstract class NodeElement : INodeElement
     {
-        public ObserverList ObserverList { get; } = new();
         public INodeElement? Parent { get; set; }
         public string Name { get; }
 
@@ -18,5 +17,7 @@ namespace FileManager
         }
 
         public virtual string Path() => throw new NotImplementedException();
+
+        public abstract void Accept(INodeVisitor visitor);
     }
 }

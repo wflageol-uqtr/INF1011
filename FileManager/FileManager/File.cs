@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FileManager
 {
-    public class File : NodeElement
+    public class File : NodeElement, IFile
     {
 
         private string? content;
@@ -18,13 +18,17 @@ namespace FileManager
             set
             {
                 content = value;
-                ObserverList.Notify();
             }
         }
 
         public File(string name, string? extension = null) : base(name)
         {
             Extension = extension;
+        }
+
+        public override void Accept(INodeVisitor visitor)
+        {
+            visitor.VisitFile(this);
         }
     }
 }

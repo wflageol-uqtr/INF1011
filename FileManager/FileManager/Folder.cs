@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FileManager
 {
-    public class Folder : NodeElement
+    public class Folder : NodeElement, IFolder
     {
         private List<INodeElement> children = new();
 
@@ -20,13 +20,18 @@ namespace FileManager
         {
             children.Add(element);
             element.Parent = this;
-            ObserverList.Notify();
         }
 
         public void RemoveChild(INodeElement element)
         {
             children.Remove(element);
-            ObserverList.Notify();
+        }
+
+        public override void Accept(INodeVisitor visitor)
+        {
+            visitor.VisitFolder(this);
+            foreach (var child in Children)
+                child.Accept(visitor);
         }
     }
 }

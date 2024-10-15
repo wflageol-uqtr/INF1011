@@ -10,5 +10,6 @@ namespace FileManager
     {
         public INodeElement? Parent { get; set; }
         public string Name { get; }
+        public void Accept(INodeVisitor visitor);
     }
 }

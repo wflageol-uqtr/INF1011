@@ -8,14 +8,14 @@ namespace FileManager
 {
     public class FileSystem
     {
-        public Folder Root { get; }
+        public IFolder Root { get; }
 
-        public FileSystem(Folder root)
+        public FileSystem(IFolder root)
         {
             Root = root;
         }
-
-        public FileSystem PlaceElementAt(NodeElement element, string path)
+        
+        public FileSystem PlaceElementAt(INodeElement element, string path)
         {
             var folderNames = path.Split("/");
 
@@ -30,7 +30,7 @@ namespace FileManager
                     current.AddChild(target);
                 }
 
-                if (target is Folder folder)
+                if (target is IFolder folder)
                     current = folder;
                 else
                     throw new InvalidOperationException($"{folderName} is not a folder.");

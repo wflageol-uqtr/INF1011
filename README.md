@@ -11,7 +11,7 @@
 
 | Travail  | Lien                   | Date de remise    |
 |----------|-----------------------------------------|-------------------|
-| Exercice 1 |  | 18 septembre |
-| Exercice 2 |  | 9 octobre    |
-| Exercice 3 |  | 6 novembre   |
+| Exercice 1 | https://github.com/wflageol-uqtr/INF1011/tree/main/Exercices/HarryPotter | 16 septembre |
+| Exercice 2 |  | 7 octobre    |
+| Exercice 3 |  | 4 novembre   |
 | Projet   |  | 16 décembre  |

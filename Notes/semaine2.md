@@ -831,5 +831,3 @@ Nous avons vu cette semaine différents concepts au niveau de la création de cl
 Par contre, pour pouvoir en arriver à prendre de bonnes décisions, il faut bien connaître les possibilités qui s'offrent à nous et faire des choix éclairés. 
 
 Il sera important dans vos travaux de bien appliquer les concepts explorés pour créer des objets qui sont adaptés au contexte de votre code!
-
-N'oubliez pas de consulter le travail 2 disponible sur le [Github du cours](https://github.com/wflageol-uqtr/inf1035/blob/master/travail2.md). Vous pouvez dès maintenant commencer à modéliser votre domaine objet et à créer vos classes de base pour le travail.

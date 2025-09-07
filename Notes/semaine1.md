@@ -58,13 +58,17 @@ Attention, ce cours n'est pas un cours facile. Il demande un travail continu et 
 
 ### Projet de session
 
-Ce cours comporte un projet de session qui se déroulera en deux phases. Vous devrez développer un jeu Web interactif. L'idée du jeu sera de promouvoir des éléments que vous trouvez intéressants en informatique ou informatique et qui pourrait amener quelqu'un à s'intéresser au domaine. Il n'est pas nécessaire que ce soit un jeu complexe (je vous donnerai un exemple de jeu dans les première séances de cours). Vous ne serez pas évalués sur la qualité du jeu lui-même, mais sur la qualité du logiciel que vous livrerez. Je donnerai plus d'information en classe durant les séances de cours.
+Ce cours comporte un projet de session qui se déroulera en deux phases. L'objectif du projet sera pour vous de développer un jeu Web interactif. Ça peut être une version digitale de n'importe quel jeu de société simple (e.g., Échecs, Go, Monopoly, etc.). Je vous donnerez un exemple de jeu complet durant les prémières séances. Vous devrez cependant choisir un jeu suffisamment complexe (i.e., pas de Jeu du Pendu). La phase 1 du projet servira entre autres à valider votre idée de projet et je pourrai vous conseiller sur comment le rendre plus complexe si nécessaire. Vous ne serez pas évalués sur la qualité du jeu lui-même, mais sur la qualité du logiciel que vous livrerez.
 
-Le travail sera effectué en équipe de 4 (dépendemment du nombre d'étudiants, il pourra y avoir un nombre d'équipes de 3 ou 5). Ce projet de session est un travail d'envergure et qui va nécessiter de la discussion et de la collaboration. Il n'y aura pas de personne seule, sans exception.
+De plus, il y aura un concours pour le meilleur jeu. L'idée du concours est de développer un jeu qui promouvoit des éléments que vous trouvez intéressants en informatique ou mathématiques et qui pourrait amener quelqu'un à s'intéresser au domaine. À noter que votre participation à ce concours est facultative (vous pouvez opter, comme mentionné plus haut, pour un jeu de société classique). Le meilleur jeu sera sélectionné pour être présenté au salon des sciences 2026. Je donnerai plus d'information en classe durant les séances de cours.
+
+Le travail sera effectué en équipe de 4 (dépendemment du nombre d'étudiants, il pourra y avoir un nombre d'équipes de 3 ou 5).
 
 Pour faciliter la création des équipes, j'ai créé une salle _Formation d'équipe_ sur le Discord du cours où vous pourrez discuter entre vous et former vos équipes au besoin.
 
-L'évaluation du projet de session se fera sous forme de présentations où vous devrez me démontrer le bon fonctionnement de votre jeu ainsi que les choix de conception que vous aurez faits. Deux séances sont prévues dans le plan de cours à cet effet. Dû au nombre d'inscriptions, les présentations devront être limitées à 15 minutes par équipe.
+Il y aura une évaluation du projet (Phase 1) en début octobre. L'objectif sera de me fournir un rapport résumant votre idée de projet, comment vous compter le développer (choix technologiques) et quelles seront les fonctionnalités principales (écrans, règles du jeu).
+
+L'évaluation finale du projet (Phase 2) de session se fera sous forme de présentations où vous devrez me démontrer le bon fonctionnement de votre jeu ainsi que les choix de conception que vous aurez faits. Deux séances seront prévues à la dernière semaine du cours à cet effet. Dû au nombre d'inscriptions, les présentations devront être limitées à 15 minutes par équipe.
 
 ### Outils et technologies
 
@@ -548,7 +552,7 @@ Il existe certains langages, comme PlantUML, qui facilitent la création de diag
 
 ## Mot de la fin
 
-Voici qui conclu l'introduction au cours. Les concepts abordés cette semaine seront repris et explorés en détails durant tout le cours de la session.
+Voici qui conclu l'introduction au cours. Les concepts abordés cette semaine seront repris et explorés en détails durant tout le cours de la session. N'oubliez-pas de former vos équipes pour le projet de session et de commencer à discuter une idée de jeu!
 
 La semaine prochaine, nous aborderons les principes d'encapsulation, types et interfaces.
 

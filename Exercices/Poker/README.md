@@ -1,4 +1,4 @@
-## Travail Pratique 2 - Poker
+## Exercice 2 - Poker
 
 Pour votre deuxième exercice, vous aurez à restructurer (_refactor_) du code légataire dans une mise en situation. Le programme en question est un algorithme pour analyser les mains de Poker.
 

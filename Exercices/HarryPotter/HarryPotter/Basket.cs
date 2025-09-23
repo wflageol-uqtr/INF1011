@@ -8,34 +8,34 @@ namespace HarryPotter
 {
     public class Basket
     {
+        private IEnumerable<Book> books;
+
         public Basket(IEnumerable<Book> books)
         {
-
+            this.books = books;
         }
 
-        public int HowMany(Book b)
-        {
-            throw new NotImplementedException();
-        }
+        public int HowMany(Book book) => books.Count(b => b.Equals(book));
 
-        public int Count()
-        {
-            throw new NotImplementedException();
-        }
+        public int Count() => books.Count();
 
-        public int HowManyDifferent()
-        {
-            throw new NotImplementedException();
-        }
+        private IEnumerable<Book> UniqueBooks() => books.Distinct();
 
-        public bool IsEmpty() 
-        {
-            throw new NotImplementedException();
-        }
+        public int HowManyDifferent() => UniqueBooks().Count();
+
+        public bool IsEmpty() => !books.Any();
 
         public Basket RemoveDifferent(int nbToRemove)
         {
-            throw new NotImplementedException();
+            List<Book> newBooks = new(books);
+            var toRemove = UniqueBooks()
+                .OrderByDescending(HowMany)
+                .Take(nbToRemove);
+
+            foreach (var bookToRemove in toRemove)
+                newBooks.Remove(bookToRemove);
+
+            return new Basket(newBooks);
         }
     }
 }

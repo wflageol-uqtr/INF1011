@@ -8,6 +8,8 @@ namespace HarryPotter
 {
     public class Book
     {
+        public static double Price { get; set; }
+
         private readonly int bookNb;
 
         public Book(int nb)

@@ -8,12 +8,11 @@ namespace HarryPotter
 {
     public class Cashier
     {
-        private readonly double price;
         private readonly IEnumerable<Discount> discounts;
 
         public Cashier(int basePrice, IEnumerable<Discount> discounts)
         {
-            price = basePrice;
+            Book.Price = basePrice;
             this.discounts = discounts;
         }
 
@@ -26,12 +25,12 @@ namespace HarryPotter
             if (availables.Any())
                 return availables.Select(d => Compute(b, d)).Min();
             else
-                return price * b.Count();
+                return Book.Price * b.Count();
         }
 
         public double Compute(Basket b, Discount d)
         {
-            var discountedPrice = d.Apply(price);
+            var discountedPrice = d.Apply(Book.Price);
             var remaining = d.RemovePaidBooks(b);
             return discountedPrice + Compute(remaining);
         }

@@ -8,24 +8,19 @@ namespace HarryPotter
 {
     public class Discount
     {
-        public Discount(int nb, double price)
-        {
+        private int nbBooks;
+        private double priceRatio;
 
+        public Discount(int nb, double priceRatio)
+        {
+            nbBooks = nb;
+            this.priceRatio = priceRatio;
         }
 
-        public bool CanBeApplied(Basket b)
-        {
-            throw new NotImplementedException();
-        }
+        public bool CanBeApplied(Basket b) => b.HowManyDifferent() >= nbBooks;
 
-        public double Apply(double basePrice)
-        {
-            throw new NotImplementedException();
-        }
+        public double Apply(double basePrice) => nbBooks * basePrice * priceRatio;
 
-        public Basket RemovePaidBooks(Basket b)
-        {
-            throw new NotImplementedException();
-        }
+        public Basket RemovePaidBooks(Basket b) => b.RemoveDifferent(nbBooks);
     }
 }

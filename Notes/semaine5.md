@@ -256,7 +256,7 @@ Voici un aperçu des 23 patrons :
   * _Template Method_
   * _Visitor_
   
-Durant le reste de la session, nous allons nous concentrer en grande partie sur l'étude de ces patrons de conception. Nous en avons déjà vu quelques uns en action dans les exemples jusqu'à maintenant (notament _Composite_, _Visitor_ et _Strategy_).
+Durant le reste de la session, nous allons nous concentrer en grande partie sur l'étude de ces patrons de conception. Nous en avons déjà vu quelques uns en action dans les exemples jusqu'à maintenant (notament _Composite_ et _Decorator_).
 
 Dans les prochaines semaines, nous verrons en détail les besoins couverts par ces patrons à l'aide de mise en situation comme celle de cette semaine (moins détaillées par contre). Nous ne les verrons cependant pas tous, pour prioriser ceux qui sont les plus couramment utilisé ou utiles.
 

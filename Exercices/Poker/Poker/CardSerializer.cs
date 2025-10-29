@@ -41,13 +41,14 @@ namespace Poker
         {
             if (serializedCard.Length != 2)
                 throw new ArgumentException("String séralisée de mauvaise longueur.");
+
+            if (serializedCard == "JK")
+                return new Card(CardSuit.Joker, CardValue.Joker);
+
             if (!Values.ContainsKey(serializedCard[0]))
                 throw new ArgumentException("Valeur non reconnue.");
             if (!Suits.ContainsKey(serializedCard[1]))
                 throw new ArgumentException("Couleur non reconnue.");
-
-            if (serializedCard == "JK")
-                return new Card(CardSuit.Joker, CardValue.Joker);
 
             return new Card(
                 SuitFromChar(serializedCard[1]),

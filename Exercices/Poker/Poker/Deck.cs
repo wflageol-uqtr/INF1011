@@ -7,18 +7,24 @@ using System.Threading.Tasks;
 
 namespace Poker
 {
-    public class Deck : IEnumerable<Card>
+    public class Deck : IDeck
     {
+        public static Deck Instance { get; } = CreateFullDeck();
+
         private List<Card> cards = new();
 
-        public static Deck CreateFullDeck()
+        private Deck() { }
+        private static Deck CreateFullDeck()
         {
             var deck = new Deck();
 
             foreach (var suit in Enum.GetValues<CardSuit>())
             {
                 foreach (var value in Enum.GetValues<CardValue>())
-                    deck.cards.Add(new Card(suit, value));
+                {
+                    if (suit != CardSuit.Joker && value != CardValue.Joker)
+                        deck.cards.Add(new Card(suit, value));
+                }
             }
 
             return deck;

@@ -11,7 +11,7 @@ namespace Poker
         public HandValue AnalyzeHand(string[] rawHand)
         {
             IHand hand = new Hand(rawHand.Select(serializer.Deserialize));
-            hand = new HandJokerDecorator(hand);
+            hand = new HandJokerDecorator(hand, Deck.Instance);
 
             return hand.CalculateValue();
         }

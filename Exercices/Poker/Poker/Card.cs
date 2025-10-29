@@ -38,6 +38,8 @@ namespace Poker
         public CardSuit Suit { get; }
         public CardValue Value { get; }
 
+        public bool IsJoker => Suit == CardSuit.Joker;
+
         public Card(CardSuit suit, CardValue value)
         {
             Suit = suit;

@@ -1,5 +1,5 @@
 ﻿@page "/pokerroom"
-@inject NavigationManager navigationManager
+@inject NavigationManager NavigationManager
 @using Microsoft.AspNetCore.SignalR.Client;
 @using PokerWeb.Hubs
 
@@ -8,20 +8,20 @@
 <h1>Blazor SignalR Chat Sample</h1>
 <hr />
 
-@if (!_isChatting)
+@if (!IsChatting)
 {
     <p>
         Enter your name to start chatting:
     </p>
 
-    <input type="text" maxlength="32" @bind="@_username" />
+    <input type="text" maxlength="32" @bind="@username" />
     <button type="button" @onclick="@Chat"><span class="oi oi-chat" aria-hidden="true"></span> Chat!</button>
 
     // Error messages
-    @if (_message != null)
+    @if (errorMessage != null)
     {
-        <div class="invalid-feedback">@_message</div>
-        <small id="emailHelp" class="form-text text-muted">@_message</small>
+        <div class="invalid-feedback">@errorMessage</div>
+        <small id="emailHelp" class="form-text text-muted">@errorMessage</small>
     }
 }
 else
@@ -29,14 +29,18 @@ else
     // banner to show current user
     <div class="alert alert-secondary mt-4" role="alert">
         <span class="oi oi-person mr-2" aria-hidden="true"></span>
-        <span>You are connected as <b>@_username</b></span>
+        <span>You are connected as <b>@username</b></span>
         <button class="btn btn-sm btn-warning ml-md-auto" @onclick="@DisconnectAsync">Disconnect</button>
     </div>
     // display messages
     <div id="scrollbox">
-        @foreach (var item in _messages)
+        @foreach (var item in messages)
         {
             @if (item.IsNotice)
+            {
+                <div class="alert alert-info">@item.Body</div>
+            }
+            else if (item.IsEvaluation)
             {
                 <div class="alert alert-info">@item.Body</div>
             }
@@ -49,75 +53,72 @@ else
             }
         }
         <hr />
-        <textarea class="input-lg" placeholder="enter your comment" @bind="@_newMessage"></textarea>
-        <button class="btn btn-default" @onclick="@(() => SendAsync(_newMessage))">Send</button>
+        <textarea class="input-lg" placeholder="enter your comment" @bind="@chatMessage"></textarea>
+        <button class="btn btn-default" @onclick="@(() => SendAsync(chatMessage))">Send</button>
     </div>
 }
 
 @code {
-    // flag to indicate chat status
-    private bool _isChatting = false;
+    private bool IsChatting => hubConnection != null;
 
     // name of the user who will be chatting
-    private string _username;
+    private string username = "";
 
     // on-screen message
-    private string _message;
+    private string errorMessage = "";
 
     // new message input
-    private string _newMessage;
+    private string chatMessage = "";
 
     // list of messages in chat
-    private List<Message> _messages = new List<Message>();
+    private List<Message> messages = new List<Message>();
 
-    private string _hubUrl;
-    private HubConnection? _hubConnection;
+    private HubConnection? hubConnection;
 
     public async Task Chat()
     {
         // check username is valid
-        if (string.IsNullOrWhiteSpace(_username))
+        if (string.IsNullOrWhiteSpace(username))
         {
-            _message = "Please enter a name";
+            errorMessage = "Please enter a name";
             return;
         };
 
         try
         {
             // Start chatting and force refresh UI.
-            _isChatting = true;
             await Task.Delay(1);
 
             // remove old messages if any
-            _messages.Clear();
+            messages.Clear();
 
             // Create the chat client
-            string baseUrl = navigationManager.BaseUri;
+            string baseUrl = NavigationManager.BaseUri;
 
-            _hubUrl = baseUrl.TrimEnd('/') + PokerHub.Url;
+            string hubUrl = baseUrl.TrimEnd('/') + PokerHub.Url;
 
-            _hubConnection = new HubConnectionBuilder()
-                .WithUrl(_hubUrl)
+            hubConnection = new HubConnectionBuilder()
+                .WithUrl(hubUrl)
                 .Build();
 
-            _hubConnection.On<string, string>("Broadcast", BroadcastMessage);
+            hubConnection.On<string, string>("Broadcast", BroadcastMessage);
 
-            await _hubConnection.StartAsync();
+            await hubConnection.StartAsync();
 
-            await SendAsync($"[Notice] {_username} joined chat room.");
+            await SendAsync($"[Notice] {username} joined chat room.");
         }
         catch (Exception e)
         {
-            _message = $"ERROR: Failed to start chat client: {e.Message}";
-            _isChatting = false;
+            errorMessage = $"ERROR: Failed to start chat client: {e.Message}";
+            hubConnection = null;
         }
     }
 
     private void BroadcastMessage(string name, string message)
     {
-        bool isMine = name.Equals(_username, StringComparison.OrdinalIgnoreCase);
+        bool isMine = name.Equals(username, StringComparison.OrdinalIgnoreCase);
 
-        _messages.Add(new Message(name, message, isMine));
+        messages.Add(new Message(name, message, isMine));
 
         // Inform blazor the UI needs updating
         InvokeAsync(StateHasChanged);
@@ -125,25 +126,24 @@ else
 
     private async Task DisconnectAsync()
     {
-        if (_isChatting)
+        if (IsChatting)
         {
-            await SendAsync($"[Notice] {_username} left chat room.");
+            await SendAsync($"[Notice] {username} left chat room.");
 
-            await _hubConnection.StopAsync();
-            await _hubConnection.DisposeAsync();
+            await hubConnection.StopAsync();
+            await hubConnection.DisposeAsync();
 
-            _hubConnection = null;
-            _isChatting = false;
+            hubConnection = null;
         }
     }
 
     private async Task SendAsync(string message)
     {
-        if (_isChatting && !string.IsNullOrWhiteSpace(message))
+        if (IsChatting && !string.IsNullOrWhiteSpace(message))
         {
-            await _hubConnection.SendAsync("Broadcast", _username, message);
+            await hubConnection.SendAsync("Broadcast", username, message);
 
-            _newMessage = string.Empty;
+            chatMessage = string.Empty;
         }
     }
 
@@ -160,6 +160,7 @@ else
         public string Body { get; set; }
         public bool Mine { get; set; }
 
+        public bool IsEvaluation => Body.StartsWith("[Evaluation]");
         public bool IsNotice => Body.StartsWith("[Notice]");
 
         public string CSS => Mine ? "sent" : "received";

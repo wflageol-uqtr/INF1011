@@ -17,7 +17,7 @@ namespace PokerTests
             // Arrange
 
             // Act
-            var deck = Deck.CreateFullDeck();
+            var deck = Deck.Instance;
 
             // Assert
             Assert.AreEqual(52, deck.Count());

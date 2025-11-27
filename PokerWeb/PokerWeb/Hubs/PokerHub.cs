@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.SignalR;
 using Poker;
+using Poker.GameLogic;
 using System.Diagnostics.Eventing.Reader;
 
 namespace PokerWeb.Hubs
@@ -7,6 +8,8 @@ namespace PokerWeb.Hubs
     public class PokerHub : Hub
     {
         public const string Url = "/pokerhub";
+
+        private GameController pokerController = new();
 
         private PokerHandAnalyzer analyzer = new();
 

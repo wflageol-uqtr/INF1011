@@ -3,5 +3,7 @@
 namespace Poker
 {
     public interface IDeck : IEnumerable<Card>
-    { }
+    {
+        public Card Draw();
+    }
 }

@@ -9,12 +9,14 @@ namespace Poker
 {
     public class Deck : IDeck
     {
+        private Random random = new();
+
         public static Deck Instance { get; } = CreateFullDeck();
 
         private List<Card> cards = new();
 
         private Deck() { }
-        public static Deck CreateFullDeck()
+        private static Deck CreateFullDeck()
         {
             var deck = new Deck();
 
@@ -28,6 +30,15 @@ namespace Poker
             }
 
             return deck;
+        }
+
+        public Card Draw()
+        {
+            int index = random.Next(cards.Count);
+            Card card = cards[index];
+            cards.Remove(card);
+
+            return card;
         }
 
 

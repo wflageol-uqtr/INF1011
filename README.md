@@ -4,7 +4,7 @@
 
 * Enseignant : William Flageol (william.flageol@uqtr.ca)
 * Horaire du groupe, session d'automne 2026 :
-  * Cours : Lundi, 8h30 - 11h30, 4015-R
+  * Cours : Mardi, 19h00 - 22h00, 4015-R
 * Communication :
   * [Discord](https://discord.gg/edFzGmP9eJ)
   * Utilisez le canal **questions** pour que je sois notifié.

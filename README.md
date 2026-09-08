@@ -12,6 +12,6 @@
 | Travail  | Lien                   | Date de remise    |
 |----------|-----------------------------------------|-------------------|
 | Exercice 1 | https://github.com/wflageol-uqtr/INF1011/tree/main/Exercices/HarryPotter | 15 septembre |
-| Exercice 2 |  | 13 octobre    |
+| Exercice 2 | https://github.com/wflageol-uqtr/INF1011/tree/main/Exercices/Poker | 13 octobre    |
 | Exercice 3 |  | 1er décembre   |
 | Projet   |  | 15 décembre  |

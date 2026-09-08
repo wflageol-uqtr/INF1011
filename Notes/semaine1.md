@@ -12,7 +12,7 @@ Un des objectifs de ce cours est de démystifier le génie logiciel orienté-obj
 
 ### Quelques mots par rapport à moi
 
-Mon nom est William Flageol, je suis un enseignant à l'UQTR depuis cinq ans. Je donne les cours principaux du cheminement de développement logiciel, tel que Génie Logiciel et Analyse de programme, ainsi qu'au niveau maîtrise dans le même domaine. J'ai aussi dans le passé enseigné la gestion de projet et le génie logiciel à l'UQAM. J'ai un doctorat en génie logiciel avec comme domaine de recherche les langages de programmation. Je m'intéresse particulièrement aux langages fonctionnels et au méta-programming, en plus de la programmation orientée objet.
+Mon nom est William Flageol, je suis un enseignant à l'UQTR depuis six ans. Je donne les cours principaux du cheminement de développement logiciel, tel que Génie Logiciel et Analyse de programme, ainsi qu'au niveau maîtrise dans le même domaine. J'ai aussi dans le passé enseigné la gestion de projet et le génie logiciel à l'UQAM. J'ai un doctorat en génie logiciel avec comme domaine de recherche les langages de programmation. Je m'intéresse particulièrement aux langages fonctionnels et au méta-programming, en plus de la programmation orientée objet.
 
 De plus, j'ai une dizaine d'années d'expérience dans l'industrie en tant que développeur et architecte logiciel. Voici un aperçu des endroits où j'ai travaillé :
 

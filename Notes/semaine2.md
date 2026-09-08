@@ -580,6 +580,10 @@ Finalement, on utilise ici la librairie _Linq_ et une _expression lambda_, conce
 
 La syntaxe pour les expressions lambda peut mener à du code parfois difficile à lire, alors c'est à utiliser avec partimonie. D'un autre côté, une expression lambda bien placée peut rendre un bout de code beaucoup plus simple à comprendre.
 
+```
+Fécilitations! Si vous lisez ceci, c'est que vous avez bien lu les notes de cours de la deuxième semaine! Je vous invite à m'envoyer un message privé sur Discord avec votre matricule étudiant (code permanent) et le mot clé "SOLID" pour obtenir un 5% bonus à votre premier travail!
+```
+
 ### Accéder aux cartes de la pioche
 
 Retournons à un problème que nous avions plus tôt : nous voulons un moyen d'accéder aux cartes de la pioche. Nous avions déterminer qu'il était possible d'avoir une méthode ``GetCards`` qui retournerait une copie de la liste des cartes interne à ``CardPile``. Mais pourquoi ne pas considérer ``CardPile`` directement comme une collection?

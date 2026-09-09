@@ -17,10 +17,19 @@ namespace HarryPotter
             this.priceRatio = priceRatio;
         }
 
-        public bool CanBeApplied(Basket b) => b.HowManyDifferent() >= nbBooks;
+        public bool CanBeApplied(Basket b)
+        {
+            throw new NotImplementedException();
+        }
 
-        public double Apply(double basePrice) => nbBooks * basePrice * priceRatio;
+        public double Apply(double basePrice)
+        {
+            throw new NotImplementedException();
+        }
 
-        public Basket RemovePaidBooks(Basket b) => b.RemoveDifferent(nbBooks);
+        public Basket RemovePaidBooks(Basket b) 
+        {
+            throw new NotImplementedException();
+        }
     }
 }

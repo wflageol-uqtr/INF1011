@@ -32,7 +32,7 @@ Comme mentionné dans le plan de cours, ce cours est divisé en quatres parties 
 * Les notes de cours que vous lisez présentement;
 * Le projet de session à développer tout le long de la session;
 * Les exercices de programmation qui seront donnés tout le long de la session;
-* Les séances du jeudi après-midi où nous discuterons de ces exercices, d'études de cas et où je répondrai à vos questions.
+* Les séances du mardi soir où nous discuterons de ces exercices, d'études de cas et où je répondrai à vos questions.
 
 **Il est important de suivre et lire les notes de cours tout le long de la session. Je ne présenterai pas ces notes durant les séances de cours.**
 

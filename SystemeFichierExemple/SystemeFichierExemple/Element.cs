@@ -4,18 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FileSystem
+namespace SystemeFichierExemple
 {
-    public class File : IElement
+    public abstract class Element : IElement
     {
         public string Name { get; }
 
-        public File(string name)
+        public Element(string name)
         {
             Name = name;
         }
 
-        public void Accept(IElementVisitor visitor)
-            => visitor.VisitFile(this);
+        public abstract void Print();
     }
 }

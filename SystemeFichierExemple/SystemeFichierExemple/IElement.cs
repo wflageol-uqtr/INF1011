@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FileSystem
+namespace SystemeFichierExemple
 {
     public interface IElement
     {
         string Name { get; }
-
-        void Accept(IElementVisitor visitor);
+        void Print();
     }
 }

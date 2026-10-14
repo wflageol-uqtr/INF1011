@@ -6,14 +6,32 @@ namespace Poker
 {
     public class PokerHandAnalyzer
     {
-        private CardSerializer serializer = new();
-
-        public HandValue AnalyzeHand(string[] rawHand)
+        public Hand AnalyzeHand(string[] hand)
         {
-            IHand hand = new Hand(rawHand.Select(serializer.Deserialize));
-            hand = new HandJokerDecorator(hand, Deck.Instance);
+            CardSerializer serializer = new();
+            var deck = BuildDeck();
+            var cards = hand.Select(serializer.Deserialize)
+                .Where(c => c != null);
 
-            return hand.CalculateValue();
+            IPokerHand pokerHand;
+            if (cards.Count() == 5)
+                pokerHand = new PokerHand(cards);
+            else 
+                pokerHand = new JokerHand(cards, deck);
+
+                return pokerHand.CalculateHand();
+        }
+
+        private IEnumerable<Card> BuildDeck()
+        {
+            var cards = new List<Card>();
+            foreach(var suit in Enum.GetValues<CardSuit>())
+            {
+                foreach (var value in Enum.GetValues<CardValue>())
+                    cards.Add(new Card(suit, value));
+            }
+
+            return cards;
         }
     }
 }

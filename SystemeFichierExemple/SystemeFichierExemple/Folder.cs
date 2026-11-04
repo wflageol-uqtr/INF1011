@@ -9,16 +9,19 @@ namespace SystemeFichierExemple
     public class Folder : Element, IFolder
     {
         private List<IElement> subElements = [];
-
         public Folder(string name) : base(name)
         {
         }
 
         public void AddSubElement(IElement element)
-            => subElements.Add(element);
+        {
+            subElements.Add(element);
+        }
 
         public void RemoveSubElement(IElement element)
-            => subElements.Remove(element);
+        {
+            subElements.Remove(element);
+        }
 
         public override void Print()
         {
@@ -26,5 +29,6 @@ namespace SystemeFichierExemple
             foreach (var element in subElements)
                 element.Print();
         }
+
     }
 }

@@ -1,23 +1,15 @@
 ﻿using SystemeFichierExemple;
+using SystemeFichierExemple.Factory;
 using SystemeFichierExemple.Logging;
 
-IFolder root = new Folder("Root");
-IFolder folder1 = new Folder("Folder 1");
-IFolder folder2 = new Folder("Folder 2");
-IMyFile file1 = new MyFile("File 1", "abc");
-IMyFile file2 = new MyFile("File 2", "def");
-IMyFile file3 = new MyFile("File 3", "ghi");
+FileSystemFacade fileSystem = new FileSystemFacade(
+    new ObservableFactory([new LoggingObserver(new FileLoggingStrategy("FileSystem.dat"))]));
 
-var observer = new LoggingObserver(new FileLoggingStrategy("Folder2.log"));
-FolderObserverDecorator decoratedFolder2 = new FolderObserverDecorator(folder2);
-decoratedFolder2.AddObserver(observer);
-folder2 = decoratedFolder2;
-
-root.AddSubElement(folder1);
-root.AddSubElement(folder2);
-folder1.AddSubElement(file1);
-
-folder2.AddSubElement(file2);
-folder2.AddSubElement(file3);
+var root = fileSystem.CreateRoot("Root");
+var folder1 = fileSystem.CreateFolder(root, "Folder 1");
+var folder2 = fileSystem.CreateFolder(root, "Folder 2");
+var file1 = fileSystem.CreateFile(folder1, "File 1", "abc");
+var file2 = fileSystem.CreateFile(folder2, "File 2", "def");
+var file3 = fileSystem.CreateFile(folder2, "File 3", "ghi");
 
 root.Print();

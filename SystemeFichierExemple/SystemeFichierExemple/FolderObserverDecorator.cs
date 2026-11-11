@@ -22,7 +22,7 @@ namespace SystemeFichierExemple
         public void RemoveObserver(IFolderObserver observer)
             => observers.Remove(observer);
 
-        public string Name => throw new NotImplementedException();
+        public string Name => innerFolder.Name;
 
         public void AddSubElement(IElement element)
         {

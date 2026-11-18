@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SystemeFichierExemple.Visitor;
 
 namespace SystemeFichierExemple
 {
     public class Folder : Element, IFolder
     {
         private List<IElement> subElements = [];
+
+        public IEnumerable<IElement> Elements => subElements;
+
         public Folder(string name) : base(name)
         {
         }
@@ -23,12 +27,9 @@ namespace SystemeFichierExemple
             subElements.Remove(element);
         }
 
-        public override void Print()
+        public override void Accept(IElementVisitor visitor)
         {
-            Console.WriteLine(Name);
-            foreach (var element in subElements)
-                element.Print();
+            visitor.Visit(this);
         }
-
     }
 }

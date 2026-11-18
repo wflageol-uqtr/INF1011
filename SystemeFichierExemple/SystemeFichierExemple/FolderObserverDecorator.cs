@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SystemeFichierExemple.Visitor;
 
 namespace SystemeFichierExemple
 {
@@ -24,6 +25,8 @@ namespace SystemeFichierExemple
 
         public string Name => innerFolder.Name;
 
+        public IEnumerable<IElement> Elements => innerFolder.Elements;
+
         public void AddSubElement(IElement element)
         {
             innerFolder.AddSubElement(element);
@@ -38,9 +41,7 @@ namespace SystemeFichierExemple
                 observer.OnRemoveSubElement(element);
         }
 
-        public void Print()
-        {
-            innerFolder.Print();
-        }
+        public void Accept(IElementVisitor visitor)
+            => innerFolder.Accept(visitor);
     }
 }

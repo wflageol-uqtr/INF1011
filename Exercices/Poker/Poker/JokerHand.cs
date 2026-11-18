@@ -15,7 +15,7 @@ namespace Poker
         {
             if (cards.Count() >= 5)
                 throw new ArgumentException("Impossible de créer un JokerHand à 5 cartes.");
-            if (cards.Count() < 4)
+            if (cards.Count() < 3)
                 throw new ArgumentException("Impossible d'avoir plus de 2 jokers.");
 
             this.cards = cards;
@@ -24,16 +24,28 @@ namespace Poker
 
         public Hand CalculateHand()
         {
-            Hand best = Hand.HighCard;
+            int count = cards.Count();
 
-            foreach(var card in cardDeck)
+            List<IEnumerable<Card>> hands = [cards];
+
+            while (count < 5)
             {
-                var newHand = new PokerHand(cards.Append(card));
-                var handValue = newHand.CalculateHand();
+                List<IEnumerable<Card>> newHands = [];
+                foreach (var cards in hands) {
+                    foreach (var card in cardDeck)
+                    {
+                        var newCards = cards.Append(card);
+                        newHands.Add(newCards);
+                    }
+                }
 
-                if (handValue > best)
-                    best = handValue;
+                hands = newHands;
+                count++;
             }
+
+            var best = hands.Select(cards => new PokerHand(cards))
+                .Select(hand => hand.CalculateHand())
+                .Max();
 
             return best;
         }
